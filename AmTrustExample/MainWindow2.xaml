@@ -13,8 +13,7 @@
                       Height="720"
                       Width="1080"
                       WindowStartupLocation="CenterScreen" WindowState="Maximized"
-    Loaded="ApplyAccent">
-                      <!--Loaded="SetDefaultTheme"-->
+                      Loaded="ApplyAccent">
     <Controls:MetroWindow.Resources>
         <ResourceDictionary>
 
@@ -117,7 +116,7 @@
                                         </ControlTemplate>
                                     </ToggleButton.Template>
                                     <Grid>
-                                        <wpfx:ButtonChrome x:Name="ToggleButtonChrome" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="2.75" Foreground="{TemplateBinding Foreground}" InnerCornerRadius="1.75" RenderMouseOver="{Binding IsMouseOver, ElementName=PART_DropDownButton}" RenderPressed="{Binding IsPressed, ElementName=PART_DropDownButton}" RenderChecked="{TemplateBinding IsOpen}" RenderEnabled="{TemplateBinding IsEnabled}">
+                                        <wpfx:ButtonChrome x:Name="ToggleButtonChrome" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" RenderMouseOver="{Binding IsMouseOver, ElementName=PART_DropDownButton}" RenderPressed="{Binding IsPressed, ElementName=PART_DropDownButton}" RenderChecked="{TemplateBinding IsOpen}" RenderEnabled="{TemplateBinding IsEnabled}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*"/>
@@ -262,7 +261,7 @@
 
     <DockPanel Style="{DynamicResource DockPanelStyle}">
 
-        <Grid Height="117" DockPanel.Dock="Top" Margin="5,5,0,0" >
+        <Grid Height="117" DockPanel.Dock="Top" Margin="0,0,0,0" >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -276,7 +275,7 @@
 
             <TabControl Grid.Column="1">
                 <TabItem Header="HOME" x:Name="home" Style="{DynamicResource TabItemStyle}"  Template="{StaticResource tabItemTemplate}">
-                    <StackPanel Margin="-75,-5,0,-5" Background="LightGray">
+                    <StackPanel Margin="-75,-5,-5,-5" Background="LightGray">
                         <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerControlTemplate}" Padding="0,0,0,5">
 
                             <StackPanel Orientation="Horizontal" Height="75">
@@ -306,12 +305,35 @@
                                         <Button ToolTip="Opens Workers Comp System">
                                             <Image Source="Images/testImage.jpg"/>
                                         </Button>
-                                        <Button ToolTip="Opens CPP System">
+
+                                        <userControl:DropDownButton x:Name="TestDropDown" DropDownContextMenu="{Binding Path=TestMenu}" ToolTip="Puffa Drop Down">
                                             <Image Source="Images/testImage.jpg"/>
-                                        </Button>
-                                        <Button ToolTip="Opens GMAC System">
+                                        </userControl:DropDownButton>
+
+                                        <userControl:DropDownButton x:Name="TestDropDown2" ToolTip="Puffa Drop Down">
+                                            <userControl:DropDownButton.DropDownContextMenu>
+                                                <ContextMenu>
+                                                    <MenuItem ToolTip="test one">
+                                                        <MenuItem.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Source="Images/testImage.jpg"/>
+                                                                <ContentPresenter Content="Test 1"/>
+                                                            </StackPanel>
+                                                        </MenuItem.Header>
+                                                    </MenuItem>
+                                                    <MenuItem Header="Test2" ToolTip="test two"/>
+                                                    <MenuItem ToolTip="Test 3">
+                                                        <MenuItem.Header>
+                                                            <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
+														ButtonLabel="I'm a puffa-button"
+														ToolTip="PUFFA BUTTTTTTON"/>
+                                                        </MenuItem.Header>
+                                                    </MenuItem>
+                                                </ContextMenu>
+                                            </userControl:DropDownButton.DropDownContextMenu>
                                             <Image Source="Images/testImage.jpg"/>
-                                        </Button>
+                                        </userControl:DropDownButton>
+
                                         <Button ToolTip="Takes you to the claims ana menus">
                                             <Image Source="Images/testImage.jpg"/>
                                         </Button>
@@ -347,29 +369,9 @@
                                             <Image Source="Images/testImage.jpg"/>
                                         </Button>
 
-                                        <!--<wpfx:DropDownButton BorderThickness="0">
-
-                                            <wpfx:DropDownButton.DropDownContent>
-                                                <Button>Bob</Button>
-                                            </wpfx:DropDownButton.DropDownContent>
-                                        </wpfx:DropDownButton>-->
-
-                                        <wpfx:DropDownButton Foreground="Black" ToolTip="Query" Style="{DynamicResource DropDownButtonStyle1}">
-                                            <wpfx:DropDownButton.DropDownContent>
-                                                <StackPanel Orientation="Vertical">
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
-														ButtonLabel="I'm a puffa-button"
-														ToolTip="PUFFA BUTTTTTTON"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
-														ButtonLabel="Agent Info"
-														ToolTip="OBTAIN AGENT INFORMATION.  ALSO, CHANGE WEB LOGON INFO."/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
-														ButtonLabel="Document Info"
-														ToolTip="DISPLAYS ALL SETUP INFORMATION ASSOCIATED WITH DOCUMENT"/>
-                                                </StackPanel>
-                                            </wpfx:DropDownButton.DropDownContent>
-                                            <Image Source="Images/testImage.jpg" Height="24" Width="24"/>
-                                        </wpfx:DropDownButton>
+                                        <userControl:DropDownButton x:Name="btnQuery" DropDownContextMenu="{Binding Path=QueryDropDownMenu}" ToolTip="Puffa Drop Down">
+                                            <Image Source="Images/testImage.jpg"/>
+                                        </userControl:DropDownButton>
 
                                     </StackPanel>
                                 </GroupBox>
@@ -596,6 +598,11 @@
                                             </wpfx:DropDownButton.DropDownContent>
                                             <Image Source="Images/testImage.jpg" Height="24" Width="24"/>
                                         </wpfx:DropDownButton>
+
+                                        <userControl:DropDownButton x:Name="TestDropDown3" DropDownContextMenu="{Binding Path=UnderwritingDropDownMenu}" ToolTip="Puffa Drop Down">
+                                            <Image Source="Images/testImage.jpg"/>
+                                        </userControl:DropDownButton>
+
                                         <Button x:Name="btnUnderwritingAttachAndOpen" ToolTip="FIND THE UNDERWRITING DOC, ATTACH AND OPEN. ONLY WORKS FOR DOCS INDEXED AS ADDITIONAL INFO.">
                                             <Image Source="Images/testImage.jpg"/>
                                         </Button>
@@ -619,37 +626,9 @@
                                 <GroupBox  HorizontalAlignment="Left" Template="{DynamicResource groupBoxTemplate}" Style="{DynamicResource GroupBoxStyle}">
                                     <GroupBox.Header >Policy Systems</GroupBox.Header>
                                     <StackPanel Orientation="Horizontal">
-                                        <wpfx:DropDownButton Foreground="Black" ToolTip="Query" Style="{DynamicResource DropDownButtonStyle1}" >
-                                            <wpfx:DropDownButton.DropDownContent>
-                                                <StackPanel Orientation="Vertical">
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
-														ButtonLabel="Quote"
-														ToolTip="UNDERWRITE THE ACCOUNT"
-														x:Name="btnUnderwritingQuote2"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
-														ButtonLabel="Decline"
-														ToolTip="SEND A DECLINATION LETTER"
-														x:Name="btnUnderwritingDecline2"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
-														ButtonLabel="Additional Information"
-														ToolTip="REQUEST ADDITIONAL INFORMATION"
-														x:Name="btnUnderwritingADDInfo2"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
-														ButtonLabel="Bind Pending"
-														ToolTip="FINE, I DIDN'T WANT A TOOL TIP ANYWAYS"
-														x:Name="btnUnderwritingBindPending2"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
-														ButtonLabel="General"
-														ToolTip="GENERAL RESPONSE TO AGENT"
-														x:Name="btnUnderwritingGeneral2"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
-														ButtonLabel="Non Renew"
-														ToolTip="BIND THE VISIBLE UNDERWRITING FILE. ONLY AIIS RENEWALS"
-														x:Name="btnUnderwritingNonRenew2"/>
-                                                </StackPanel>
-                                            </wpfx:DropDownButton.DropDownContent>
-                                            <Image Source="Images/testImage.jpg" Height="24" Width="24"/>
-                                        </wpfx:DropDownButton>
+                                        <userControl:DropDownButton x:Name="TestDropDown4" DropDownContextMenu="{Binding Path=UnderwritingDropDownMenu}" ToolTip="Puffa Drop Down">
+                                            <Image Source="Images/testImage.jpg"/>
+                                        </userControl:DropDownButton>
                                         <Button x:Name="btnUnderwritingAttachAndOpen2" ToolTip="FIND THE UNDERWRITING DOC, ATTACH AND OPEN. ONLY WORKS FOR DOCS INDEXED AS ADDITIONAL INFO.">
                                             <Image Source="Images/testImage.jpg"/>
                                         </Button>
@@ -703,7 +682,7 @@
 
 
 
-        <Grid x:Name="NaviPaneAndGridView" DockPanel.Dock="Left" Margin="5,3,5,0">
+        <Grid x:Name="NaviPaneAndGridView" DockPanel.Dock="Left" Margin="0,3,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" MinWidth="200"/>
                 <ColumnDefinition Width="4*"/>
@@ -721,24 +700,19 @@
             <Controls:MetroTabControl Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom">
                 <!--<TabItem Header="Inbox" ></TabItem>-->
                 <Controls:MetroTabItem Header="Inbox" 
-					Controls:ControlsHelper.HeaderFontSize="14"
-					Style="{StaticResource MetroTabItemCloseableStyle}"/>
+					Controls:ControlsHelper.HeaderFontSize="14"/>
                 <Controls:MetroTabItem Header="Document X"
 					Controls:ControlsHelper.HeaderFontSize="14"
-					CloseButtonEnabled="True"
-					 Style="{DynamicResource MetroTabItemCloseableStyle}"/>
+					CloseButtonEnabled="True"/>
                 <Controls:MetroTabItem Header="Document X"
 					Controls:ControlsHelper.HeaderFontSize="14"
-					CloseButtonEnabled="True"
-                    Style="{DynamicResource MetroTabItemCloseableStyle}"/>
+					CloseButtonEnabled="True"/>
                 <Controls:MetroTabItem Header="Document X"
 					Controls:ControlsHelper.HeaderFontSize="14"
-					CloseButtonEnabled="True"
-					Style="{StaticResource MetroTabItemCloseableStyle}"/>
+					CloseButtonEnabled="True"/>
                 <Controls:MetroTabItem Header="Document X"
 					Controls:ControlsHelper.HeaderFontSize="14"
-					CloseButtonEnabled="True"
-					Style="{StaticResource MetroTabItemCloseableStyle}"/>
+					CloseButtonEnabled="True"/>
             </Controls:MetroTabControl>
             <!--</TabControl>-->
             <!--</StackPanel>-->
@@ -833,7 +807,7 @@
                 </Button>
             </StackPanel>
 
-                <DataGrid Grid.Column="1" Grid.Row="2" Grid.RowSpan="3">
+            <DataGrid Grid.Column="1" Grid.Row="2" Grid.RowSpan="3">
                 <DataGrid.Style>
                     <Style BasedOn="{StaticResource MetroDataGrid}"
 						TargetType="{x:Type DataGrid}">

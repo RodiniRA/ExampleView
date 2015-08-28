@@ -1989,9 +1989,6 @@
                                               Margin="3,0"
                                               Height="29"
                                               IsHitTestVisible="False">
-                                    <i:Interaction.Behaviors>
-                                        <b:TitleWidthBehavior />
-                                    </i:Interaction.Behaviors>
                                     <ContentPresenter.Resources>
                                         <!-- Glowing effect around Title in Aero glass theme -->
                                         <DataTemplate DataType="{x:Type system:String}">
