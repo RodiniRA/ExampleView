@@ -534,7 +534,7 @@
                 </TabItem>
                 <TabItem Header="UNDERWRITING" x:Name="underwriting" Style="{DynamicResource TabItemStyle}">
                     <StackPanel Margin="-75,-5,0,-5" Background="LightGray">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Padding="0,0,0,5" Template="{DynamicResource ScrollViewerControlTemplate}" >
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Padding="0,0,0,5" >
 
                             <StackPanel Orientation="Horizontal" Height="75">
                                 <GroupBox  HorizontalAlignment="Left" Template="{DynamicResource groupBoxTemplate}" Style="{DynamicResource GroupBoxStyle}">
@@ -593,7 +593,7 @@
                 </TabItem>
                 <TabItem Header="AUDIT" x:Name="audit" Style="{DynamicResource TabItemStyle}">
                     <StackPanel Margin="-75,-5,0,-5" Background="LightGray">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerControlTemplate}" Padding="0,0,0,5">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Padding="0,0,0,5">
 
                             <StackPanel Orientation="Horizontal" Height="75">
                                 <GroupBox  HorizontalAlignment="Left" Template="{DynamicResource groupBoxTemplate}" Style="{DynamicResource GroupBoxStyle}">
@@ -619,7 +619,7 @@
                 </TabItem>
                 <TabItem Header="PROCESSING" x:Name="processing" Style="{DynamicResource TabItemStyle}">
                     <StackPanel Margin="-75,-5,0,-5" Background="LightGray">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerControlTemplate}" Padding="0,0,0,5">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Padding="0,0,0,5">
 
                             <StackPanel Orientation="Horizontal" Height="75">
                                 <GroupBox  HorizontalAlignment="Left" Template="{DynamicResource groupBoxTemplate}" Style="{DynamicResource GroupBoxStyle}">

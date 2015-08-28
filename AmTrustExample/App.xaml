@@ -26,6 +26,7 @@
             <SolidColorBrush x:Key="TabHoverColor" Color="#1D3D6C" />
             <SolidColorBrush x:Key="FileTabBackground" Color="#142B4C" />
             <Color x:Key="AccentColor">#3F68A4</Color>
+            <!--<Color x:Key="AccentColor">LightGray</Color>-->
             <SolidColorBrush x:Key="TabForegroundHoverBrush" Color="#ffffff" options:Freeze="True" />
             
             
@@ -177,6 +178,7 @@
             <Style x:Key="ToolBarBackgroundStyle" TargetType="{x:Type StackPanel}">
                 <Setter Property="Background">
                     <Setter.Value>
+                        
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Offset="0" Color="{DynamicResource AccentColor}"/>
                             <GradientStop Offset="0.75" Color="Transparent"/>
