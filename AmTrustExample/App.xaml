@@ -131,6 +131,18 @@
             <Style x:Key="TabItemStyle" TargetType="{x:Type TabItem}">
                 <Setter Property="Background" Value="{DynamicResource AppBaseColor}"/>
                 <Setter Property="Foreground" Value="White"/>
+                
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid>
+                                <Border x:Name="Header" Padding="25,0" Background="{TemplateBinding Background}" Height="35" CornerRadius="3,3,0,0">
+                                    <ContentPresenter Content="{TemplateBinding Header}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
                 <Style.Triggers>
                     <Trigger Property="IsSelected" Value="True">
                         <Setter Property="Background" Value="LightGray"/>
@@ -146,6 +158,22 @@
                 </Style.Triggers>
             </Style>
 
+            <Style x:Key="FileTabItemStyle" TargetType="{x:Type TabItem}">
+                <Setter Property="Background" Value="{DynamicResource FileTabBackground}"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid>
+                                <Border x:Name="Header" Padding="25,0" Background="{TemplateBinding Background}" Height="35" CornerRadius="3,3,0,0">
+                                    <ContentPresenter Content="{TemplateBinding Header}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <Style x:Key="ToolBarBackgroundStyle" TargetType="{x:Type StackPanel}">
                 <Setter Property="Background">
                     <Setter.Value>
@@ -157,10 +185,7 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="FileTabItemStyle" TargetType="{x:Type TabItem}">
-                <Setter Property="Background" Value="#142B4C"/>
-                <Setter Property="Foreground" Value="White"/>
-            </Style>
+            
 
             <Style x:Key="TabControlStyle" TargetType="{x:Type TabControl}">
                 <Setter Property="Background" Value="LightGray"/>
@@ -203,7 +228,7 @@
 
             </Style>
 
-            <Style x:Key="DropDownButtonItemStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Style x:Key="ImageHeaderButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
@@ -277,6 +302,28 @@
                 </Setter>
             </Style>
 
+            <Style TargetType="{x:Type ScrollViewer}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                            <Grid x:Name="Grid" Background="{TemplateBinding Background}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Rectangle x:Name="Corner" Grid.Column="1" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Grid.Row="1"/>
+                                <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.RowSpan="2" Margin="{TemplateBinding Padding}" Grid.ColumnSpan="2"/>
+                                <ScrollBar x:Name="PART_VerticalScrollBar" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Width="8"/>
+                                <ScrollBar x:Name="PART_HorizontalScrollBar" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" Grid.Column="0" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" Height="8"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
             <Style TargetType="{x:Type ScrollBar}">
                 <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
@@ -406,22 +453,17 @@
                                     </MultiTrigger.Conditions>
                                     <Setter Property="Background" Value="{DynamicResource TabHoverColor}"/>
                                 </MultiTrigger>
-
-
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-                
             </Style>
 
-            <!--<Style TargetType="TabItem" BasedOn="{StaticResource MetroTabItem}" />-->
 
             <!--Color keys for the Metro Flat Button Triggers-->
             <SolidColorBrush x:Key="FlatButtonBackgroundBrush" Color="#D5D5D5" options:Freeze="True" />
             <SolidColorBrush x:Key="FlatButtonForegroundBrush" Color="#222222" options:Freeze="True" />
             <SolidColorBrush x:Key="FlatButtonPressedBackgroundBrush" Color="#222222" options:Freeze="True" />
-            <!--<SolidColorBrush x:Key="FlatButtonPressedBackgroundBrush" Color="HotPink" options:Freeze="True" />-->
             <SolidColorBrush x:Key="FlatButtonPressedForegroundBrush" Color="White" options:Freeze="True" />
 
 

@@ -52,41 +52,14 @@
                 </Grid>
             </ControlTemplate>
 
-            <ControlTemplate x:Key="tabItemTemplate" TargetType="{x:Type TabItem}">
-                <Grid>
-                    <Border x:Name="Header" Padding="25,0" Background="{TemplateBinding Background}" Height="35" CornerRadius="3,3,0,0">
-                        <ContentPresenter Content="{TemplateBinding Header}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </Grid>
-            </ControlTemplate>
-
-
-            <ControlTemplate x:Key="ScrollViewerControlTemplate" TargetType="{x:Type ScrollViewer}">
-                <Grid x:Name="Grid" Background="{TemplateBinding Background}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle x:Name="Corner" Grid.Column="1" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Grid.Row="1"/>
-                    <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.RowSpan="2" Margin="{TemplateBinding Padding}" Grid.ColumnSpan="2"/>
-                    <ScrollBar x:Name="PART_VerticalScrollBar" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Width="8"/>
-                    <ScrollBar x:Name="PART_HorizontalScrollBar" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" Grid.Column="0" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" Height="8"/>
-                </Grid>
-            </ControlTemplate>
-
-
             <DataTemplate x:Key="DropDownButtonTemplate">
-                <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
+                <userControl:ImageHeaderButton ButtonImage="Images/testImage.jpg"
             		ButtonLabel="{Binding Label}"
             		ToolTip="{Binding ToolTip}"/>
             </DataTemplate>
 
             <DataTemplate x:Key="GroupBoxButtonTemplate">
-                <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
+                <userControl:ImageHeaderButton ButtonImage="Images/testImage.jpg"
             		ToolTip="{Binding ToolTip}"/>
             </DataTemplate>
             <Style x:Key="DropDownButtonStyle1" TargetType="{x:Type wpfx:DropDownButton}">
@@ -270,13 +243,13 @@
 
 
             <TabControl Grid.Column="0" Width="70">
-                <TabItem Header="FILE" x:Name="FileTab" PreviewMouseLeftButtonDown="ShowFileFlyout" Background="{DynamicResource FileTabBackground}" Template="{StaticResource tabItemTemplate}" Style="{DynamicResource FileTabItemStyle}" Visibility="Visible" Margin="0,0,0,0" Width="Auto" Height="Auto"/>
+                <TabItem Header="FILE" x:Name="FileTab" PreviewMouseLeftButtonDown="ShowFileFlyout" Style="{DynamicResource FileTabItemStyle}" Visibility="Visible" Margin="0,0,0,0" Width="Auto" Height="Auto"/>
             </TabControl>
 
             <TabControl Grid.Column="1">
-                <TabItem Header="HOME" x:Name="home" Style="{DynamicResource TabItemStyle}"  Template="{StaticResource tabItemTemplate}">
+                <TabItem Header="HOME" x:Name="home" Style="{DynamicResource TabItemStyle}">
                     <StackPanel Margin="-75,-5,-5,-5" Background="LightGray">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerControlTemplate}" Padding="0,0,0,5">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Padding="0,0,0,5">
 
                             <StackPanel Orientation="Horizontal" Height="75">
                                 <GroupBox Header="Policy Systems" HorizontalAlignment="Left" Template="{DynamicResource groupBoxTemplate}" Style="{DynamicResource GroupBoxStyle}">
@@ -324,8 +297,8 @@
                                                     <MenuItem Header="Test2" ToolTip="test two"/>
                                                     <MenuItem ToolTip="Test 3">
                                                         <MenuItem.Header>
-                                                            <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
-														ButtonLabel="I'm a puffa-button"
+                                                            <userControl:ImageHeaderButton ButtonImage="Images/testImage.jpg"
+                                                                                           ButtonLabel="I'm a puffa button"
 														ToolTip="PUFFA BUTTTTTTON"/>
                                                         </MenuItem.Header>
                                                     </MenuItem>
@@ -559,9 +532,9 @@
                         </ScrollViewer>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="UNDERWRITING" x:Name="underwriting" Style="{DynamicResource TabItemStyle}"  Template="{StaticResource tabItemTemplate}" >
+                <TabItem Header="UNDERWRITING" x:Name="underwriting" Style="{DynamicResource TabItemStyle}">
                     <StackPanel Margin="-75,-5,0,-5" Background="LightGray">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerControlTemplate}" Padding="0,0,0,5">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Padding="0,0,0,5" Template="{DynamicResource ScrollViewerControlTemplate}" >
 
                             <StackPanel Orientation="Horizontal" Height="75">
                                 <GroupBox  HorizontalAlignment="Left" Template="{DynamicResource groupBoxTemplate}" Style="{DynamicResource GroupBoxStyle}">
@@ -570,27 +543,27 @@
                                         <wpfx:DropDownButton Foreground="Black" ToolTip="Query" Style="{DynamicResource DropDownButtonStyle1}" >
                                             <wpfx:DropDownButton.DropDownContent>
                                                 <StackPanel Orientation="Vertical">
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
+                                                    <userControl:ImageHeaderButton ButtonImage="Images/testImage.jpg"
 														ButtonLabel="Quote"
 														ToolTip="UNDERWRITE THE ACCOUNT"
 														x:Name="btnUnderwritingQuote"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
+                                                    <userControl:ImageHeaderButton ButtonImage="Images/testImage.jpg"
 														ButtonLabel="Decline"
 														ToolTip="SEND A DECLINATION LETTER"
 														x:Name="btnUnderwritingDecline"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
+                                                    <userControl:ImageHeaderButton ButtonImage="Images/testImage.jpg"
 														ButtonLabel="Additional Information"
 														ToolTip="REQUEST ADDITIONAL INFORMATION"
 														x:Name="btnUnderwritingADDInfo"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
+                                                    <userControl:ImageHeaderButton ButtonImage="Images/testImage.jpg"
 														ButtonLabel="Bind Pending"
 														ToolTip="FINE, I DIDN'T WANT A TOOL TIP ANYWAYS"
 														x:Name="btnUnderwritingBindPending"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
+                                                    <userControl:ImageHeaderButton ButtonImage="Images/testImage.jpg"
 														ButtonLabel="General"
 														ToolTip="GENERAL RESPONSE TO AGENT"
 														x:Name="btnUnderwritingGeneral"/>
-                                                    <userControl:DropDownButtonItem ButtonImage="Images/testImage.jpg"
+                                                    <userControl:ImageHeaderButton ButtonImage="Images/testImage.jpg"
 														ButtonLabel="Non Renew"
 														ToolTip="BIND THE VISIBLE UNDERWRITING FILE. ONLY AIIS RENEWALS"
 														x:Name="btnUnderwritingNonRenew"/>
@@ -618,7 +591,7 @@
                         </ScrollViewer>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="AUDIT" x:Name="audit" Style="{DynamicResource TabItemStyle}"  Template="{StaticResource tabItemTemplate}" >
+                <TabItem Header="AUDIT" x:Name="audit" Style="{DynamicResource TabItemStyle}">
                     <StackPanel Margin="-75,-5,0,-5" Background="LightGray">
                         <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerControlTemplate}" Padding="0,0,0,5">
 
@@ -644,7 +617,7 @@
                         </ScrollViewer>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="PROCESSING" x:Name="processing" Style="{DynamicResource TabItemStyle}"  Template="{StaticResource tabItemTemplate}" >
+                <TabItem Header="PROCESSING" x:Name="processing" Style="{DynamicResource TabItemStyle}">
                     <StackPanel Margin="-75,-5,0,-5" Background="LightGray">
                         <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerControlTemplate}" Padding="0,0,0,5">
 
@@ -793,7 +766,7 @@
                 </Button>
                 <Label x:Name="lblResults" FontWeight="Bold" Content="Results: 0 Showing 0-0"/>
                 <Separator Height="10" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                <userControl:DropDownButtonItem ButtonImage="Images/placeholder.png"
+                <userControl:ImageHeaderButton ButtonImage="Images/placeholder.png"
 					ButtonLabel="Empty Trash"
 					x:Name="btnEmptyTrash"/>
                 <!--<Button Name="btnEmptyTrash" Style="{StaticResource TEST}">

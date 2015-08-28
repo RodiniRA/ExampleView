@@ -16,14 +16,14 @@ using System.Windows.Shapes;
 namespace AmTrustExample.UserControls
 {
     /// <summary>
-    /// Interaction logic for DropDownButtonItem.xaml
+    /// Interaction logic for ImageHeaderButton.xaml
     /// </summary>
-    public partial class DropDownButtonItem : UserControl
+    public partial class ImageHeaderButton : UserControl
     {
-        public DropDownButtonItem()
+        public ImageHeaderButton()
         {
             InitializeComponent();
-            DropDownButtonItemRoot.DataContext = this;
+            ImageHeaderButtonRoot.DataContext = this;
         }
 
         public ImageSource ButtonImage
@@ -33,7 +33,7 @@ namespace AmTrustExample.UserControls
         }
 
         public static readonly DependencyProperty ButtonImageProperty =
-            DependencyProperty.Register("ButtonImage", typeof(ImageSource), typeof(DropDownButtonItem), new UIPropertyMetadata(null));
+            DependencyProperty.Register("ButtonImage", typeof(ImageSource), typeof(ImageHeaderButton), new UIPropertyMetadata(null));
 
 
         public string ButtonLabel
@@ -43,7 +43,7 @@ namespace AmTrustExample.UserControls
         }
 
         public static readonly DependencyProperty ButtonLabelProperty =
-            DependencyProperty.Register("ButtonLabel", typeof(string), typeof(DropDownButtonItem), new UIPropertyMetadata(null));
+            DependencyProperty.Register("ButtonLabel", typeof(string), typeof(ImageHeaderButton), new UIPropertyMetadata(null));
 
     }
 }

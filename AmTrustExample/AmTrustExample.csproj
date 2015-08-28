@@ -100,8 +100,8 @@
     <Compile Include="Models\HomeItemModel.cs" />
     <Compile Include="ThemeManager.cs" />
     <Compile Include="UserControls\DropDownButton.cs" />
-    <Compile Include="UserControls\DropDownButtonItem.xaml.cs">
-      <DependentUpon>DropDownButtonItem.xaml</DependentUpon>
+    <Compile Include="UserControls\ImageHeaderButton.xaml.cs">
+      <DependentUpon>ImageHeaderButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow2.xaml">
@@ -160,11 +160,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\DropDownButtonItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\DropDownButtonStyle.xaml">
+    <Page Include="UserControls\ImageHeaderButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
