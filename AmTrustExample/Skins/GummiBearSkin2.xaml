@@ -15,13 +15,13 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <SolidColorBrush x:Key="AppBaseColor" Color="#2A579A" />
-    <SolidColorBrush x:Key="TabHoverColor" Color="#1D3D6C" />
-    <SolidColorBrush x:Key="FileTabBackground" Color="#142B4C" />
-    <Color x:Key="AccentColor">#3F68A4</Color>
-    <!--<Color x:Key="AccentColor">LightGray</Color>-->
-    <SolidColorBrush x:Key="TabForegroundHoverBrush" Color="#ffffff" options:Freeze="True" />
-    <SolidColorBrush x:Key="NaviMainButtonSelectedColor" Color="#8EA6C9" />
+    <SolidColorBrush x:Key="AppBaseColor" Color="#FF0000 " />
+    <SolidColorBrush x:Key="TabHoverColor" Color="#Fad225" />
+    <SolidColorBrush x:Key="FileTabBackground" Color="#0d78ca" />
+    <Color x:Key="AccentColor">#0d78ca</Color>
+    <SolidColorBrush x:Key="TabForegroundHoverBrush" Color="#59c937" options:Freeze="True" />
+    <SolidColorBrush x:Key="NaviMainButtonSelectedColor" Color="#59c937" />
+
 
 
     <Style x:Key="VirtualisedMetroTreeView"

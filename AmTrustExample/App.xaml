@@ -20,7 +20,7 @@
                 <ResourceDictionary Source="Ribbon\Generic.xaml"/>
 
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
-            </ResourceDictionary.MergedDictionaries> 
+            </ResourceDictionary.MergedDictionaries>
 
             <SolidColorBrush x:Key="AppBaseColor" Color="#2A579A" />
             <SolidColorBrush x:Key="TabHoverColor" Color="#1D3D6C" />
@@ -28,8 +28,9 @@
             <Color x:Key="AccentColor">#3F68A4</Color>
             <!--<Color x:Key="AccentColor">LightGray</Color>-->
             <SolidColorBrush x:Key="TabForegroundHoverBrush" Color="#ffffff" options:Freeze="True" />
-            
-            
+            <SolidColorBrush x:Key="NaviMainButtonSelectedColor" Color="#8EA6C9" />
+
+
 
             <Style x:Key="VirtualisedMetroTreeView"
            TargetType="{x:Type TreeView}"
@@ -45,11 +46,16 @@
             <Style TargetType="{x:Type TreeViewItem}"
            BasedOn="{StaticResource MetroTreeViewItem}" />
 
-            <Style x:Key="ButtonSkin" TargetType="{x:Type Button}" BasedOn="{StaticResource MetroButton}">
+            <Style x:Key="ButtonSkin" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                 <Setter Property="Background" Value="{DynamicResource AppBaseColor}"/>
                 <Setter Property="Foreground" Value="#ffffff"/>
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource NaviMainButtonSelectedColor}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource AppBaseColor}"/>
+                    </Trigger>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter Property="Background" Value="{StaticResource NaviMainButtonSelectedColor}"/>
                         <Setter Property="Foreground" Value="{DynamicResource AppBaseColor}"/>
                     </Trigger>
                 </Style.Triggers>
@@ -127,12 +133,41 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource AppBaseColor}"/>
                 <Setter Property="Foreground" Value="white"/>
                 <Setter Property="Padding" Value="5,0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type GroupBox}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Separator Grid.Column="2" Grid.Row="0" Height="30" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" HorizontalAlignment="Right"/>
+
+                                <Border x:Name="Content" Grid.Row="0" Grid.Column="1" Margin="7,0">
+                                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                                </Border>
+
+                                <Border x:Name="Header" Grid.Row="1" Grid.Column="1" Padding="3,1,3,1" Background="{Binding BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+            			CornerRadius="2,2,2,2" Margin="{TemplateBinding Padding}">
+                                    <ContentPresenter Content="{TemplateBinding Header}" HorizontalAlignment="Center" />
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+
+                    </Setter.Value>
+                </Setter>
             </Style>
 
-            <Style x:Key="TabItemStyle" TargetType="{x:Type TabItem}">
+            <Style TargetType="{x:Type TabItem}">
                 <Setter Property="Background" Value="{DynamicResource AppBaseColor}"/>
                 <Setter Property="Foreground" Value="White"/>
-                
+
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TabItem}">
@@ -178,7 +213,7 @@
             <Style x:Key="ToolBarBackgroundStyle" TargetType="{x:Type StackPanel}">
                 <Setter Property="Background">
                     <Setter.Value>
-                        
+
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Offset="0" Color="{DynamicResource AccentColor}"/>
                             <GradientStop Offset="0.75" Color="Transparent"/>
@@ -187,7 +222,7 @@
                 </Setter>
             </Style>
 
-            
+
 
             <Style x:Key="TabControlStyle" TargetType="{x:Type TabControl}">
                 <Setter Property="Background" Value="LightGray"/>
@@ -387,8 +422,8 @@
                 </Style.Triggers>
             </Style>
 
-            
-            
+
+
             <Style TargetType="{x:Type Controls:MetroTabItem}">
                 <Style.Triggers>
                     <Trigger Property="IsSelected" Value="True">
@@ -548,7 +583,7 @@
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           RecognizesAccessKey="True" />
                                     <Path VerticalAlignment="Center" Margin="0,1,0,0" HorizontalAlignment="Center" Fill="Black" Data="M 0 0 L 3 3 L 6 0 Z"/>
-                                    
+
                                 </StackPanel>
                             </Border>
                             <ControlTemplate.Triggers>
@@ -574,6 +609,11 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type GridSplitter}">
+                <Setter Property="Background" Value="{StaticResource AppBaseColor}"/>
+                <Setter Property="Width" Value="2"/>
             </Style>
 
         </ResourceDictionary>

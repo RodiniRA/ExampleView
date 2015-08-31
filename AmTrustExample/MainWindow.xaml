@@ -1207,7 +1207,7 @@
 
             <DataGrid Grid.Column="1" Grid.RowSpan="3">
                 <DataGrid.Style>
-                    <Style BasedOn="{StaticResource MetroDataGrid}"
+                    <Style BasedOn="{DynamicResource MetroDataGrid}"
                        TargetType="{x:Type DataGrid}">
                         <Setter Property="AlternatingRowBackground"
                             Value="{DynamicResource GrayBrush10}" />

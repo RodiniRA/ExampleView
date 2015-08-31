@@ -48,6 +48,12 @@ namespace AmTrustExample
             flyout.IsOpen = !flyout.IsOpen;
         }
 
+        private void CloseFlyout_Click(object sender, RoutedEventArgs e)
+        {
+            this.FileFlyout.IsOpen = false;
+        }
+
+
         private void SetDefaultTheme(object sender, RoutedEventArgs e)
         {
             ResourceDictionary resources = null;
@@ -81,7 +87,9 @@ namespace AmTrustExample
             Application.Current.Resources = resources;
 
             // add custom accent and theme resource dictionaries
-            ThemeManager.AddAccent("Emerald", new Uri(string.Format("pack://application:,,,/MahApps.Metro;component/Styles/Accents/Emerald.xaml")));
+            //ThemeManager.AddAccent("Emerald", new Uri(string.Format("pack://application:,,,/MahApps.Metro;component/Styles/Accents/Emerald.xaml")));
+
+            ThemeManager.AddAccent("Emerald", new Uri(@"Styles\Accents\Emerald.xaml", UriKind.RelativeOrAbsolute));
 
             // get the theme from the current application
             var theme = ThemeManager.DetectAppStyle(Application.Current);
@@ -89,6 +97,48 @@ namespace AmTrustExample
             // now use the custom accent
             ThemeManager.ChangeAppStyle(Application.Current,
                                     ThemeManager.GetAccent("Emerald"),
+                                    theme.Item1);
+        }
+
+        private void DarkSkin_Click(object sender, RoutedEventArgs e)
+        {
+            ResourceDictionary resources = null;
+            resources = (ResourceDictionary)Application.LoadComponent(new Uri("Skins/DarkSkin2.xaml", UriKind.RelativeOrAbsolute));
+            this.FileFlyout.IsOpen = false;
+
+            this.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources = resources;
+
+            // add custom accent and theme resource dictionaries
+            ThemeManager.AddAccent("Dark", new Uri(@"Styles\Accents\Dark.xaml", UriKind.RelativeOrAbsolute));
+
+            // get the theme from the current application
+            var theme = ThemeManager.DetectAppStyle(Application.Current);
+
+            // now use the custom accent
+            ThemeManager.ChangeAppStyle(Application.Current,
+                                    ThemeManager.GetAccent("Dark"),
+                                    theme.Item1);
+        }
+
+        private void GummiBearSkin_Click(object sender, RoutedEventArgs e)
+        {
+            ResourceDictionary resources = null;
+            resources = (ResourceDictionary)Application.LoadComponent(new Uri("Skins/GummiBearSkin2.xaml", UriKind.RelativeOrAbsolute));
+            this.FileFlyout.IsOpen = false;
+
+            this.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources = resources;
+
+            // add custom accent and theme resource dictionaries
+            ThemeManager.AddAccent("GummiBear", new Uri(@"Styles\Accents\GummiBear.xaml", UriKind.RelativeOrAbsolute));
+
+            // get the theme from the current application
+            var theme = ThemeManager.DetectAppStyle(Application.Current);
+
+            // now use the custom accent
+            ThemeManager.ChangeAppStyle(Application.Current,
+                                    ThemeManager.GetAccent("GummiBear"),
                                     theme.Item1);
         }
 
@@ -106,6 +156,5 @@ namespace AmTrustExample
                                     theme.Item1);
         }
 
-        
     }
 }

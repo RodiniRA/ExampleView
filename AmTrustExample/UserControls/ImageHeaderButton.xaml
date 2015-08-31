@@ -9,7 +9,7 @@
         <Button x:Name="thebutton" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"  Style="{DynamicResource ImageHeaderButtonStyle}">
             <StackPanel Orientation="Horizontal" >
                 <Image x:Name="theImage" Source="{Binding ButtonImage}"/>
-                <Label x:Name="theLabel" Margin="2,0,0,0" Content="{Binding ButtonLabel}" FontWeight="SemiBold"></Label>
+                <Label x:Name="theLabel" Margin="2,0,0,0" Content="{Binding ButtonLabel}" FontWeight="SemiBold" FontSize="12"></Label>
             </StackPanel>
         </Button>
     </Grid>

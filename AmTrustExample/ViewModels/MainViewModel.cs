@@ -15,8 +15,8 @@ namespace AmTrustExample.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        public List<ButtonModel> QueryButtonOptions { get; set; }
-        public List<ButtonModel> PolicySystemButtons { get; set; }
+        public List<Album> Albums { get; set; }
+
 
         private ContextMenu _testMenu = null;
         private ContextMenu _underwritingDropDownMenu = null;
@@ -124,11 +124,8 @@ namespace AmTrustExample.ViewModels
         #region "Constructor"
         public MainViewModel()
         {
-            SampleData.Seed();
-
-            QueryButtonOptions = SampleData.ButtonModels;
-            PolicySystemButtons = SampleData.PolicySystemButtons;
-
+            AlbumSampleData.Seed();
+            Albums = AlbumSampleData.Albums;
         }
         #endregion
 
