@@ -11,7 +11,8 @@
                       Height="720"
                       Width="1080"
                       WindowStartupLocation="CenterScreen" WindowState="Maximized"
-                      Loaded="ApplyAccent">
+                      Loaded="ApplyAccent"
+                      Icon="Images/testImage.jpg">
     <Controls:MetroWindow.Resources>
         <ResourceDictionary>
 
@@ -51,12 +52,12 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel>
-                        <TabControl Grid.Row="0" TabStripPlacement="Left">
-                            <TabItem Header="Email" Width="200"/>
-                            <TabItem Header="Reference Links" Width="200"/>
-                            <TabItem Header="Admin Tools" Width="200"/>
-                            <TabItem Header="Recent Activity" FontSize="8" Width="200"/>
-                            <TabItem Header="Theme" Width="200">
+                        <TabControl Grid.Row="0" TabStripPlacement="Left" Grid.Column="0">
+                            <TabItem Header="Email" Width="200" Style="{DynamicResource FlyoutTabItemStyle}"/>
+                            <TabItem Header="Reference Links" Width="200" Style="{DynamicResource FlyoutTabItemStyle}"/>
+                            <TabItem Header="Admin Tools" Width="200" Style="{DynamicResource FlyoutTabItemStyle}"/>
+                                <TabItem Header="Recent Activity" FontSize="8" Width="200" Style="{DynamicResource FlyoutTabItemStyle}"/>
+                            <TabItem Header="Theme" Width="200" Style="{DynamicResource FlyoutTabItemStyle}">
                                 <StackPanel>
                                     <Button Click="SetDefaultTheme">
                                         <StackPanel>
@@ -84,11 +85,11 @@
                                     </Button>
                                 </StackPanel>
                             </TabItem>
-                            <TabItem Header="Style" Width="200"/>
-                            <TabItem Header="About" Width="200"/>
+                            <TabItem Header="Style" Width="200" Style="{DynamicResource FlyoutTabItemStyle}"/>
+                            <TabItem Header="About" Width="200" Style="{DynamicResource FlyoutTabItemStyle}"/>
                         </TabControl>
 
-                        <Button Content="Close" Grid.Row="2" Click="CloseFlyout_Click"/>
+                        <Button Content="Close" Grid.Row="2" Click="CloseFlyout_Click" Width="75" HorizontalAlignment="Center" Margin="10"/>
                     </StackPanel>
                 </Grid>
 
@@ -502,10 +503,7 @@
             </Grid.RowDefinitions>
 
             <!--THIS IS A PLACE HOLDER FOR ALL NAVI MENUS-->
-            <!--<StackPanel Grid.Column="1" Grid.Row="0">-->
-            <!--<TabControl x:Name="TabControlAboveGridview" Grid.Column="1" Grid.Row="0">-->
             <Controls:MetroTabControl Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom">
-                <!--<TabItem Header="Inbox" ></TabItem>-->
                 <Controls:MetroTabItem Header="Inbox" 
 					Controls:ControlsHelper.HeaderFontSize="14"/>
                 <Controls:MetroTabItem Header="Document X"
@@ -521,13 +519,7 @@
 					Controls:ControlsHelper.HeaderFontSize="14"
 					CloseButtonEnabled="True"/>
             </Controls:MetroTabControl>
-            <!--</TabControl>-->
-            <!--</StackPanel>-->
 
-
-
-
-            <!--</StackPanel>-->
 
             <StackPanel x:Name="ToolBarPanel" Orientation="Horizontal" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" >
                 <Button x:Name="btnRefreshNaviTree" Style="{StaticResource ToolBarButtonStyle}" ToolTip="Refresh Navigation Treeview">
@@ -575,7 +567,7 @@
                 <Button x:Name="FileCabinet" Content="File Cabinet" Height="40" Style="{DynamicResource ButtonSkin}"/>
                 <Button x:Name="Search" Content="Search" Height="40" Style="{DynamicResource ButtonSkin}"/>
                 <Button x:Name="Suspense" Content="Suspense" Height="40" Style="{DynamicResource ButtonSkin}"/>
-                <Button x:Name="Calendar" Content="Calendar" Height="40" Style="{DynamicResource ButtonSkin}"/>
+                <Button x:Name="Calendar" Content="Calendar" Height="40" Style="{DynamicResource ButtonSkin2}"/>
             </StackPanel>
 
             <GridSplitter Grid.Row="1" Grid.RowSpan="2" Grid.Column="0"/>

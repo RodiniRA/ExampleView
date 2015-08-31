@@ -34,7 +34,7 @@ namespace AmTrustExample.ViewModels
                     {
                         var mItem = new MenuItem();
                         mItem.Header = "Test " + i;
-                        mItem.ToolTip = "TEST puffaPUFFApuffa TEST";
+                        mItem.ToolTip = string.Format("Test {0} Tooltip", i);
                         mItem.Icon = new Image { Source = new BitmapImage(new Uri("/AmTrustExample;component/Images/testImage.jpg", UriKind.Relative)), Height = 32, Width = 32 };
 
                         _testMenu.Items.Add(mItem);

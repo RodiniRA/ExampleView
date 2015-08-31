@@ -38,20 +38,67 @@
     <Style TargetType="{x:Type TreeViewItem}"
            BasedOn="{StaticResource MetroTreeViewItem}" />
 
-    <!--BasedOn="{StaticResource MetroButton}"-->
     <Style x:Key="ButtonSkin" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="Background" Value="{DynamicResource AppBaseColor}"/>
         <Setter Property="Foreground" Value="#ffffff"/>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource NaviMainButtonSelectedColor}"/>
-                <Setter Property="Foreground" Value="{DynamicResource AppBaseColor}"/>
-            </Trigger>
-            <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="{StaticResource NaviMainButtonSelectedColor}"/>
-                <Setter Property="Foreground" Value="{DynamicResource AppBaseColor}"/>
-            </Trigger>
-        </Style.Triggers>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="ButtonContent" Grid.Row="0">
+                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <Separator x:Name="ButtonDivider" Grid.Row="1" Width="50" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource TabHoverColor}"/>
+                            <Setter Property="Foreground" Value="#ffffff"/>
+                            <Setter Property="Foreground" TargetName="ButtonDivider" Value="{StaticResource TabHoverColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{StaticResource NaviMainButtonSelectedColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource AppBaseColor}"/>
+                            <Setter Property="Foreground" TargetName="ButtonDivider" Value="{StaticResource NaviMainButtonSelectedColor}"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ButtonSkin2" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Background" Value="{DynamicResource AppBaseColor}"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Border x:Name="ButtonContent">
+                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource TabHoverColor}"/>
+                            <Setter Property="Foreground" Value="#ffffff"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{StaticResource NaviMainButtonSelectedColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource AppBaseColor}"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="DockPanelStyle" TargetType="{x:Type DockPanel}">

@@ -1206,13 +1206,13 @@
             <GridSplitter Grid.Row="1" Grid.Column="0" Width="2" Background="Gray"/>
 
             <DataGrid Grid.Column="1" Grid.RowSpan="3">
-                <DataGrid.Style>
+                <!--<DataGrid.Style>
                     <Style BasedOn="{DynamicResource MetroDataGrid}"
                        TargetType="{x:Type DataGrid}">
                         <Setter Property="AlternatingRowBackground"
                             Value="{DynamicResource GrayBrush10}" />
                     </Style>
-                </DataGrid.Style>
+                </DataGrid.Style>-->
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Type"></DataGridTextColumn>
                     <DataGridTextColumn Header="Flag"></DataGridTextColumn>
