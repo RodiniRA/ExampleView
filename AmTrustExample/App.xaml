@@ -43,23 +43,40 @@
 
             <Style TargetType="{x:Type TreeView}"
            BasedOn="{StaticResource MetroTreeView}" />
+
+
             <Style TargetType="{x:Type TreeViewItem}"
-           BasedOn="{StaticResource MetroTreeViewItem}" />
+           BasedOn="{StaticResource MetroTreeViewItem}">
+                <Setter Property="HeaderTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="img"
+						   Width="20"
+						   Height="20"
+						   Stretch="Fill"
+						   Source="Images/testImage.jpg"/>
+                                <TextBlock Text="{Binding}" Margin="5,0" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
             <Style x:Key="ButtonSkin" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                 <Setter Property="Background" Value="{DynamicResource AppBaseColor}"/>
                 <Setter Property="Foreground" Value="#ffffff"/>
-                
+
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid Background="{TemplateBinding Background}">
+                            <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Border x:Name="ButtonContent" Grid.Row="0">
+                                <Border x:Name="ButtonContent" Grid.Row="0" Background="{TemplateBinding Background}">
                                     <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
                                 </Border>
                                 <Separator x:Name="ButtonDivider" Grid.Row="1" Width="50" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
@@ -68,12 +85,12 @@
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="{StaticResource TabHoverColor}"/>
                                     <Setter Property="Foreground" Value="#ffffff"/>
-                                    <Setter Property="Foreground" TargetName="ButtonDivider" Value="{StaticResource TabHoverColor}"/>
+                                    <!--<Setter Property="Foreground" TargetName="ButtonDivider" Value="{StaticResource TabHoverColor}"/>-->
                                 </Trigger>
                                 <Trigger Property="IsFocused" Value="True">
                                     <Setter Property="Background" Value="{StaticResource NaviMainButtonSelectedColor}"/>
                                     <Setter Property="Foreground" Value="{DynamicResource AppBaseColor}"/>
-                                    <Setter Property="Foreground" TargetName="ButtonDivider" Value="{StaticResource NaviMainButtonSelectedColor}"/>
+                                    <!--<Setter Property="Foreground" TargetName="ButtonDivider" Value="{StaticResource NaviMainButtonSelectedColor}"/>-->
                                     <Setter Property="FontWeight" Value="SemiBold"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
@@ -340,6 +357,7 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type RepeatButton}">
                             <Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+                            <!--<Rectangle Fill="{StaticResource FileTabBackground}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>-->
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -357,9 +375,9 @@
                                     <ColumnDefinition Width="4" />
                                     <ColumnDefinition Width="4" />
                                 </Grid.ColumnDefinitions>
-                                <Ellipse Grid.Column="0" Grid.ColumnSpan="2" Fill="#FFF4F4F5" />
-                                <Rectangle Grid.Column="1" Grid.ColumnSpan="3" Fill="#FFF4F4F5" />
-                                <Ellipse Grid.Column="3" Grid.ColumnSpan="2" Fill="#FFF4F4F5" />
+                                <Ellipse Grid.Column="0" Grid.ColumnSpan="2" Fill="{StaticResource NaviMainButtonSelectedColor}" />
+                                <Rectangle Grid.Column="1" Grid.ColumnSpan="3" Fill="{StaticResource NaviMainButtonSelectedColor}" />
+                                <Ellipse Grid.Column="3" Grid.ColumnSpan="2" Fill="{StaticResource NaviMainButtonSelectedColor}" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -378,9 +396,9 @@
                                     <RowDefinition Height="4" />
                                     <RowDefinition Height="4" />
                                 </Grid.RowDefinitions>
-                                <Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="#FFF4F4F5" />
-                                <Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="#FFF4F4F5" />
-                                <Ellipse Grid.Row="3" Grid.RowSpan="2" Fill="#FFF4F4F5" />
+                                <Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="{StaticResource NaviMainButtonSelectedColor}" />
+                                <Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="{StaticResource NaviMainButtonSelectedColor}" />
+                                <Ellipse Grid.Row="3" Grid.RowSpan="2" Fill="{StaticResource NaviMainButtonSelectedColor}" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -388,6 +406,8 @@
             </Style>
 
             <Style TargetType="{x:Type ScrollViewer}">
+                <Setter Property="Padding" Value="0,0,0,5"/>
+                <!--<Setter Property="Margin" Value="1"/>-->
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ScrollViewer}">
@@ -410,7 +430,14 @@
                 </Setter>
             </Style>
 
-            <Style TargetType="{x:Type ScrollBar}">
+
+            <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource MetroScrollBar}">
+                <Setter Property="Foreground" Value="HotPink"/>
+                
+            </Style>
+            
+            <!--this part gets rid of side-to-side buttons-->
+            <!--<Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
                 <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
                 <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
@@ -468,7 +495,7 @@
                         </Setter>
                     </Trigger>
                 </Style.Triggers>
-            </Style>
+            </Style>-->
 
 
 
@@ -663,11 +690,28 @@
                 <Setter Property="Background" Value="{StaticResource AppBaseColor}"/>
                 <Setter Property="Width" Value="2"/>
             </Style>
-            
+
             <Style x:Key="FlyoutTabItemStyle" TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="HorizontalAlignment" Value="Left"/>
             </Style>
+
+            <!--<Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                <Setter Property="HeaderTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="img"
+						   Width="20"
+						   Height="20"
+						   Stretch="Fill"
+						   Source="Images/testImage.jpg"/>
+                                <TextBlock Text="{Binding}" Margin="5,0" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>-->
 
         </ResourceDictionary>
     </Application.Resources>

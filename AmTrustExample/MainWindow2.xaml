@@ -115,7 +115,7 @@
             <TabControl Grid.Column="1">
                 <TabItem Header="HOME" x:Name="home">
                     <StackPanel Margin="-75,-5,-5,-5" Background="LightGray">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Padding="0,0,0,5">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto">
 
                             <StackPanel Orientation="Horizontal" Height="75">
                                 <GroupBox Header="Policy Systems" HorizontalAlignment="Left" Style="{DynamicResource GroupBoxStyle}">
@@ -536,7 +536,7 @@
             </StackPanel>
 
 
-            <TreeView Style="{DynamicResource VirtualisedMetroTreeView}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" VerticalAlignment="Stretch">
+            <TreeView Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" VerticalAlignment="Stretch">
                 <TreeViewItem Header="View My Buddy List">
                     <TreeViewItem Header="Longo">
                         <TreeViewItem Header="Tasks" />
@@ -558,6 +558,47 @@
                 <TreeViewItem Header="Underwriting" />
                 <TreeViewItem Header="Processing" />
                 <TreeViewItem Header="Trash Can" />
+
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglong" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
+                <TreeViewItem Header="Trash Can" />
             </TreeView>
 
             <StackPanel Grid.Row="3" Grid.Column="0">
@@ -567,7 +608,7 @@
                 <Button x:Name="FileCabinet" Content="File Cabinet" Height="40" Style="{DynamicResource ButtonSkin}"/>
                 <Button x:Name="Search" Content="Search" Height="40" Style="{DynamicResource ButtonSkin}"/>
                 <Button x:Name="Suspense" Content="Suspense" Height="40" Style="{DynamicResource ButtonSkin}"/>
-                <Button x:Name="Calendar" Content="Calendar" Height="40" Style="{DynamicResource ButtonSkin2}"/>
+                <Button x:Name="Calendar" Content="Calendar" Height="40" Style="{DynamicResource ButtonSkin}"/>
             </StackPanel>
 
             <GridSplitter Grid.Row="1" Grid.RowSpan="2" Grid.Column="0"/>
