@@ -100,7 +100,7 @@
 
     <DockPanel Style="{DynamicResource DockPanelStyle}">
 
-        <Grid Height="117" DockPanel.Dock="Top" Margin="0,0,0,0" >
+        <Grid Height="105" DockPanel.Dock="Top" Margin="0,0,0,0" >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -108,16 +108,16 @@
             </Grid.ColumnDefinitions>
 
 
-            <TabControl Grid.Column="0" Width="70">
+            <TabControl Grid.Column="0" Width="70" Height="70" VerticalAlignment="Top">
                 <TabItem Header="FILE" x:Name="FileTab" PreviewMouseLeftButtonDown="ShowFileFlyout" Style="{DynamicResource FileTabItemStyle}" Visibility="Visible" Margin="0,0,0,0" Width="Auto" Height="Auto"/>
             </TabControl>
 
-            <TabControl Grid.Column="1">
+            <TabControl Grid.Column="1" Height="105" VerticalAlignment="Top">
                 <TabItem Header="HOME" x:Name="home">
-                    <StackPanel Margin="-75,-5,-5,-5" Background="LightGray">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto">
+                    <StackPanel Style="{StaticResource RibbonStackPanel}">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Style="{StaticResource ScrollViewerStyle}" Padding="0,0,0,5">
 
-                            <StackPanel Orientation="Horizontal" Height="75">
+                            <StackPanel Orientation="Horizontal" Height="70">
                                 <GroupBox Header="Policy Systems" HorizontalAlignment="Left" Style="{DynamicResource GroupBoxStyle}">
                                     <StackPanel Orientation="Horizontal">
 
@@ -399,10 +399,10 @@
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="UNDERWRITING" x:Name="underwriting">
-                    <StackPanel Margin="-75,-5,0,-5" Background="LightGray">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Padding="0,0,0,5" >
+                    <StackPanel Style="{StaticResource RibbonStackPanel}">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Style="{StaticResource ScrollViewerStyle}" Padding="0,0,0,5" >
 
-                            <StackPanel Orientation="Horizontal" Height="75">
+                            <StackPanel Orientation="Horizontal" Height="70">
                                 <GroupBox  HorizontalAlignment="Left" Style="{DynamicResource GroupBoxStyle}">
                                     <GroupBox.Header >Policy Systems</GroupBox.Header>
                                     <StackPanel Orientation="Horizontal">
@@ -427,10 +427,10 @@
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="AUDIT" x:Name="audit">
-                    <StackPanel Margin="-75,-5,0,-5" Background="LightGray">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Padding="0,0,0,5">
+                    <StackPanel Style="{StaticResource RibbonStackPanel}">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Style="{StaticResource ScrollViewerStyle}" Padding="0,0,0,5">
 
-                            <StackPanel Orientation="Horizontal" Height="75">
+                            <StackPanel Orientation="Horizontal" Height="70">
                                 <GroupBox  HorizontalAlignment="Left" Style="{DynamicResource GroupBoxStyle}">
                                     <GroupBox.Header >Policy Systems</GroupBox.Header>
                                     <StackPanel Orientation="Horizontal">
@@ -453,10 +453,10 @@
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="PROCESSING" x:Name="processing">
-                    <StackPanel Margin="-75,-5,0,-5" Background="LightGray">
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Padding="0,0,0,5">
+                    <StackPanel Style="{StaticResource RibbonStackPanel}">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Style="{StaticResource ScrollViewerStyle}" Padding="0,0,0,5">
 
-                            <StackPanel Orientation="Horizontal" Height="75">
+                            <StackPanel Orientation="Horizontal" Height="70">
                                 <GroupBox  HorizontalAlignment="Left" Style="{DynamicResource GroupBoxStyle}">
                                     <GroupBox.Header >Policy Systems</GroupBox.Header>
                                     <StackPanel Orientation="Horizontal">
@@ -490,7 +490,7 @@
 
 
 
-        <Grid x:Name="NaviPaneAndGridView" DockPanel.Dock="Left" Margin="0,3,0,0">
+        <Grid x:Name="NaviPaneAndGridView" DockPanel.Dock="Left" Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" MinWidth="200"/>
                 <ColumnDefinition Width="4*"/>

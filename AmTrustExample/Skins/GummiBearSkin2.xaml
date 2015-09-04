@@ -16,12 +16,20 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+
     <SolidColorBrush x:Key="AppBaseColor" Color="#FF0000 " />
     <SolidColorBrush x:Key="TabHoverColor" Color="#Fad225" />
-    <SolidColorBrush x:Key="FileTabBackground" Color="#357921" />
+    <SolidColorBrush x:Key="FileTabBackground" Color="#660066" />
     <Color x:Key="AccentColor">#0d78ca</Color>
     <SolidColorBrush x:Key="TabForegroundHoverBrush" Color="#59c937" options:Freeze="True" />
     <SolidColorBrush x:Key="NaviMainButtonSelectedColor" Color="#59c937" />
+
+
+    <!--Color keys for the Metro Flat Button Triggers-->
+    <SolidColorBrush x:Key="FlatButtonBackgroundBrush" Color="#D5D5D5" options:Freeze="True" />
+    <SolidColorBrush x:Key="FlatButtonForegroundBrush" Color="#222222" options:Freeze="True" />
+    <SolidColorBrush x:Key="FlatButtonPressedBackgroundBrush" Color="#222222" options:Freeze="True" />
+    <SolidColorBrush x:Key="FlatButtonPressedForegroundBrush" Color="White" options:Freeze="True" />
 
 
     <Style x:Key="VirtualisedMetroTreeView"
@@ -35,8 +43,25 @@
 
     <Style TargetType="{x:Type TreeView}"
            BasedOn="{StaticResource MetroTreeView}" />
+
+
     <Style TargetType="{x:Type TreeViewItem}"
-           BasedOn="{StaticResource MetroTreeViewItem}" />
+           BasedOn="{StaticResource MetroTreeViewItem}">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Name="img"
+						   Width="20"
+						   Height="20"
+						   Stretch="Fill"
+						   Source="Images/testImage.jpg"/>
+                        <TextBlock Text="{Binding}" Margin="5,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style x:Key="ButtonSkin" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="Background" Value="{DynamicResource AppBaseColor}"/>
@@ -45,13 +70,13 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid Background="{TemplateBinding Background}">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Border x:Name="ButtonContent" Grid.Row="0">
+                        <Border x:Name="ButtonContent" Grid.Row="0" Background="{TemplateBinding Background}">
                             <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
                         </Border>
                         <Separator x:Name="ButtonDivider" Grid.Row="1" Width="50" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
@@ -60,12 +85,12 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{StaticResource TabHoverColor}"/>
                             <Setter Property="Foreground" Value="#ffffff"/>
-                            <Setter Property="Foreground" TargetName="ButtonDivider" Value="{StaticResource TabHoverColor}"/>
+                            <!--<Setter Property="Foreground" TargetName="ButtonDivider" Value="{StaticResource TabHoverColor}"/>-->
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
                             <Setter Property="Background" Value="{StaticResource NaviMainButtonSelectedColor}"/>
                             <Setter Property="Foreground" Value="{DynamicResource AppBaseColor}"/>
-                            <Setter Property="Foreground" TargetName="ButtonDivider" Value="{StaticResource NaviMainButtonSelectedColor}"/>
+                            <!--<Setter Property="Foreground" TargetName="ButtonDivider" Value="{StaticResource NaviMainButtonSelectedColor}"/>-->
                             <Setter Property="FontWeight" Value="SemiBold"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -119,7 +144,6 @@
         <Setter Property="VerticalAlignment" Value="Top"/>
     </Style>
 
-
     <Style x:Key="FlyoutBackground" TargetType="{x:Type Control}">
         <Setter Property="Background" Value="{DynamicResource AppBaseColor}"/>
     </Style>
@@ -168,7 +192,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid>
-                        <Border x:Name="Header" Padding="25,0" Background="{TemplateBinding Background}" Height="35" CornerRadius="3,3,0,0">
+                        <Border x:Name="Header" Padding="25,0" Background="{TemplateBinding Background}" Height="30" CornerRadius="3,3,0,0">
                             <ContentPresenter Content="{TemplateBinding Header}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
@@ -197,7 +221,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid>
-                        <Border x:Name="Header" Padding="25,0" Background="{TemplateBinding Background}" Height="35" CornerRadius="3,3,0,0">
+                        <Border x:Name="Header" Padding="25,0" Background="{TemplateBinding Background}" Height="30" CornerRadius="3,3,0,0">
                             <ContentPresenter Content="{TemplateBinding Header}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
@@ -257,6 +281,9 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="TEST" TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
+
+    </Style>
 
     <Style x:Key="ImageHeaderButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="Background" Value="Transparent"/>
@@ -270,28 +297,9 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="{x:Type ScrollViewer}">
-        <Setter Property="Padding" Value="0,0,0,5"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ScrollViewer}">
-                    <Grid x:Name="Grid" Background="{TemplateBinding Background}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle x:Name="Corner" Grid.Column="1" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Grid.Row="1"/>
-                        <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.RowSpan="2" Margin="{TemplateBinding Padding}" Grid.ColumnSpan="2"/>
-                        <ScrollBar x:Name="PART_VerticalScrollBar" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Width="8"/>
-                        <ScrollBar x:Name="PART_HorizontalScrollBar" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" Grid.Column="0" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" Height="8"/>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+    <Style x:Key="TabItemStyleTest" TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
+        <Setter Property="Background" Value="white"/>
+        <Setter Property="Width" Value="150"/>
     </Style>
 
     <Style TargetType="{x:Type Controls:MetroTabItem}">
@@ -367,11 +375,7 @@
     </Style>
 
 
-    <!--Color keys for the Metro Flat Button Triggers-->
-    <SolidColorBrush x:Key="FlatButtonBackgroundBrush" Color="#D5D5D5" options:Freeze="True" />
-    <SolidColorBrush x:Key="FlatButtonForegroundBrush" Color="#222222" options:Freeze="True" />
-    <SolidColorBrush x:Key="FlatButtonPressedBackgroundBrush" Color="#222222" options:Freeze="True" />
-    <SolidColorBrush x:Key="FlatButtonPressedForegroundBrush" Color="White" options:Freeze="True" />
+
 
 
     <!--Direct copy of the MahApps FlatButtonStyle. Can customize it across skins this way-->
@@ -486,5 +490,258 @@
         <Setter Property="Width" Value="2"/>
     </Style>
 
+    <Style x:Key="GridSplitterStyle" TargetType="{x:Type GridSplitter}">
+        <Setter Property="Background" Value="Gray"/>
+        <Setter Property="Width" Value="2"/>
+    </Style>
+
+    <Style x:Key="TreeViewStyle" TargetType="{x:Type TreeView}" BasedOn="{StaticResource MetroTreeView}">
+        <Setter Property="Background" Value="LimeGreen"/>
+    </Style>
+
+    <Style x:Key="FlyoutTabItemStyle" TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <!--<Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                <Setter Property="HeaderTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Name="img"
+						   Width="20"
+						   Height="20"
+						   Stretch="Fill"
+						   Source="Images/testImage.jpg"/>
+                                <TextBlock Text="{Binding}" Margin="5,0" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>-->
+
+    <Style x:Key="ScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
+        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <ScrollContentPresenter Grid.Column="1"/>
+                        <!--<ScrollBar Style="{DynamicResource RibbonScrollBarStyle}"/>-->
+                        <RepeatButton Grid.Column="0" HorizontalAlignment="Left" Style="{DynamicResource RepeatButtonStyleLeft}"/>
+                        <RepeatButton Grid.Column="2" HorizontalAlignment="Right" Style="{DynamicResource RepeatButtonStyleRight}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RepeatButtonStyleRight" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Command" Value="ScrollBar.LineRightCommand"/>
+        <Setter Property="Margin" Value="5,0,0,0"/>
+        <Setter Property="Padding" Value="5,0,0,0"/>
+        <Setter Property="Background" Value="Orange"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Width" Value="10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Grid x:Name="Root">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                       Storyboard.TargetName="HoverPath">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1"
+                                                                  Value="1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                       Storyboard.TargetName="Blur">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1"
+                                                                  Value="0.5" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard />
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                       Storyboard.TargetName="Root">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1"
+                                                                  Value="0.5" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Button x:Name="RepeatButtonRight" Command="ScrollBar.ScrollHereCommand"/>
+                        <Path Data="F1 M 511.047,352.682L 511.047,342.252L 517.145,347.467L 511.047,352.682 Z "
+                              Height="10"
+                              Stretch="Uniform"
+                              Width="6"
+                              Fill="{DynamicResource GrayBrush1}" />
+                        <Path x:Name="HoverPath"
+                              Data="F1 M 511.047,352.682L 511.047,342.252L 517.145,347.467L 511.047,352.682 Z "
+                              Height="10"
+                              Stretch="Uniform"
+                              Width="6"
+                              UseLayoutRounding="False"
+                              Opacity="0"
+                              Margin="1,1,0,0"
+                              Fill="{DynamicResource BlackBrush}" />
+                        <Path x:Name="Blur"
+                              Data="F1 M 511.047,352.682L 511.047,342.252L 517.145,347.467L 511.047,352.682 Z "
+                              Height="10"
+                              Stretch="Uniform"
+                              Width="6"
+                              UseLayoutRounding="False"
+                              Opacity="0"
+                              Margin="1,1,0,0"
+                              Fill="{DynamicResource BlackBrush}">
+                            <Path.Effect>
+                                <BlurEffect />
+                            </Path.Effect>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="RepeatButtonRight" Value="DarkGray"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="RepeatButtonRight" Value="{StaticResource FileTabBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RepeatButtonStyleLeft" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Command" Value="ScrollBar.LineLeftCommand"/>
+        <Setter Property="Margin" Value="0,0,5,0"/>
+        <Setter Property="Padding" Value="0,0,5,0"/>
+        <Setter Property="Background" Value="Orange"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Width" Value="10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Grid x:Name="Root">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                       Storyboard.TargetName="HoverPath">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1"
+                                                                  Value="1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                       Storyboard.TargetName="Blur">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1"
+                                                                  Value="0.5" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard />
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                       Storyboard.TargetName="Root">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1"
+                                                                  Value="0.5" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Button x:Name="RepeatButtonLeft" Command="ScrollBar.ScrollHereCommand"/>
+                        <Path Data="F1 M 110.692,342.252L 110.692,352.682L 104.594,347.467L 110.692,342.252 Z "
+                              Height="10"
+                              Stretch="Uniform"
+                              Width="6"
+                              Fill="{DynamicResource GrayBrush1}" />
+                        <Path x:Name="HoverPath"
+                              Data="F1 M 110.692,342.252L 110.692,352.682L 104.594,347.467L 110.692,342.252 Z "
+                              Height="10"
+                              Stretch="Uniform"
+                              Width="6"
+                              UseLayoutRounding="False"
+                              Opacity="0"
+                              Margin="0,1,0,0"
+                              Fill="{DynamicResource BlackBrush}" />
+                        <Path x:Name="Blur"
+                              Data="F1 M 110.692,342.252L 110.692,352.682L 104.594,347.467L 110.692,342.252 Z "
+                              Height="10"
+                              Stretch="Uniform"
+                              Width="6"
+                              UseLayoutRounding="False"
+                              Opacity="0"
+                              Margin="0,1,0,0"
+                              Fill="{DynamicResource BlackBrush}">
+                            <Path.Effect>
+                                <BlurEffect />
+                            </Path.Effect>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="RepeatButtonLeft" Value="DarkGray"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="RepeatButtonLeft" Value="{StaticResource FileTabBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RibbonScrollBarStyle" TargetType="{x:Type ScrollBar}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Track Visibility="Collapsed"/>
+                        <RepeatButton Grid.Column="0" HorizontalAlignment="Left" Style="{DynamicResource RepeatButtonStyleLeft}"/>
+                        <RepeatButton Grid.Column="2" HorizontalAlignment="Right" Style="{DynamicResource RepeatButtonStyleRight}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RibbonStackPanel" TargetType="{x:Type StackPanel}">
+        <Setter Property="Margin" Value="-75,-5,-5,0"/>
+        <Setter Property="Background" Value="LightGray"/>
+        <Setter Property="Height" Value="70"/>
+    </Style>
 
 </ResourceDictionary>
