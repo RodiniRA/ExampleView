@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace AmTrustExample.UserControls
 {
-    public class DropDownButton : ToggleButton
+    public class DropDownButton : Button
     {
 
         #region "Dependency Properties"
@@ -26,7 +26,7 @@ namespace AmTrustExample.UserControls
         {
             //Bind the ToggleButton.IsChecked property to the drop-downs' IsOpen property
             var binding = new Binding("DropDownContextMenu.IsOpen") { Source = this };
-            SetBinding(IsCheckedProperty, binding);
+            //SetBinding(IsCheckedProperty, binding);
         }
 
         #endregion
@@ -85,6 +85,16 @@ namespace AmTrustExample.UserControls
             DropDownContextMenu.PlacementTarget = this;
             DropDownContextMenu.Placement = PlacementMode.Bottom;
             DropDownContextMenu.IsOpen = !DropDownContextMenu.IsOpen;
+        }
+
+        #endregion
+
+        #region "Methods"
+
+        public void Add(MenuItem b)
+        {
+            if (this.ContextMenu == null) this.ContextMenu = new ContextMenu();
+            this.ContextMenu.Items.Add(b);
         }
 
         #endregion

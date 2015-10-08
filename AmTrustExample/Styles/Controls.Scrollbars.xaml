@@ -3,6 +3,8 @@
                     xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
                     xmlns:System="clr-namespace:System;assembly=mscorlib">
 
+    
+    
     <!-- fugging Scrollbars -->
     <ControlTemplate x:Key="HorizontalScrollBar"
                      TargetType="{x:Type ScrollBar}">
@@ -197,12 +199,18 @@
                                        Fill="{DynamicResource ThumbBrush}" />
                             <Rectangle x:Name="MouseOverRectangle"
                                        StrokeThickness="1"
-                                       Opacity="0"
-                                       Fill="{DynamicResource FileTabBackground}" />
+                                       Opacity="0">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush Color="{DynamicResource FileTabColor}"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
                             <Rectangle x:Name="PressedRectangle"
                                        StrokeThickness="1"
-                                       Opacity="0"
-                                       Fill="{DynamicResource FileTabBackground}" />
+                                       Opacity="0">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush Color="{DynamicResource FileTabColor}"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -465,12 +473,18 @@
                                        Fill="{DynamicResource ThumbBrush}" />
                             <Rectangle x:Name="MouseOverRectangle"
                                        StrokeThickness="1"
-                                       Opacity="0"
-                                       Fill="{DynamicResource FileTabBackground}" />
+                                       Opacity="0">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush Color="{DynamicResource FileTabColor}"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
                             <Rectangle x:Name="PressedRectangle"
                                        StrokeThickness="1"
-                                       Opacity="0"
-                                       Fill="{DynamicResource FileTabBackground}" />
+                                       Opacity="0">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush Color="{DynamicResource FileTabColor}"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -542,7 +556,7 @@
     </ControlTemplate>
 
     <!-- Style for overall  ScrollBar -->
-    <Style x:Key="MetroScrollBarxxx"
+    <Style x:Key="MetroScrollBar"
            TargetType="{x:Type ScrollBar}">
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
